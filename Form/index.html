@@ -102,7 +102,7 @@ button:hover {
       please enter in the following box and submit for confirmation:</p> 
     OTP of 4 digits:<label name="otpnumber" id="otpnumber"></label>
     <p><input placeholder="Enter Your OTP" id="otpNumber" type="txt" required></p>
-    <input type="submit" value="Validate" id="Validate" name="Validate" onclick="validcap()"/>
+   <!--- <input type="submit" value="Validate" id="Validate" name="Validate" onclick="validotp()"/>-->
   </div>
   <div style="overflow:auto;">
     <div style="float:right;">
@@ -155,8 +155,11 @@ function nextPrev(n) {
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
     // ... the form gets submitted:
+    
     document.getElementById("regForm").submit();
+    validotp();
     return false;
+    
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
@@ -266,30 +269,30 @@ for(i=0;i<=178;i++){
  // A function to format text to look like a phone number
  function phoneFormat(input)
 {
-// Strip all characters from the input except digits
-input = input.replace(/\D/g,'');
+      // Strip all characters from the input except digits
+      input = input.replace(/\D/g,'');
 
-// Trim the remaining input to ten characters, to preserve phone number format
-input = input.substring(0,10);
+      // Trim the remaining input to ten characters, to preserve phone number format
+      input = input.substring(0,10);
 
-// Based upon the length of the string, we add formatting as necessary
-var size = input.length;
-if(size == 0){
-        input = input;
-}else if(size < 4){
-        input = '('+input;
-}else if(size < 7){
-        input = '('+input.substring(0,3)+')'+'-'+input.substring(3,6);
-}else{
-        input = '('+input.substring(0,3)+')'+'-'+input.substring(3,6)+'-'+input.substring(6,10);
-}
-return input; 
-}
-document.getElementById('phoneNumber').addEventListener('keyup',function(evt){
-var phoneNumber = document.getElementById('phoneNumber');
-var charCode = (evt.which) ? evt.which : evt.keyCode;
-phoneNumber.value = phoneFormat(phoneNumber.value);
-number1= phoneNumber.value;
+      // Based upon the length of the string, we add formatting as necessary
+      var size = input.length;
+      if(size == 0){
+              input = input;
+      }else if(size < 4){
+              input = '('+input;
+      }else if(size < 7){
+              input = '('+input.substring(0,3)+')'+'-'+input.substring(3,6);
+      }else{
+              input = '('+input.substring(0,3)+')'+'-'+input.substring(3,6)+'-'+input.substring(6,10);
+      }
+      return input; 
+    }
+      document.getElementById('phoneNumber').addEventListener('keyup',function(evt){
+      var phoneNumber = document.getElementById('phoneNumber');
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      phoneNumber.value = phoneFormat(phoneNumber.value);
+      number1= phoneNumber.value;
 
 });
 
@@ -313,33 +316,20 @@ function generateOTP() {
  // document.write("OTP of 4 digits: ")
   document.write( generateOTP() );
 
-  function validcap(){
+  function validotp(){
             //var stg1 = document.getElementById('capt').value;
             var stg1 = document.getElementById('otpNumber').value;
             if(stg1==OTP){
               alert(" Validation Succesfully");
-              return true;
+              //return true;
             }else{
               alert("Please enter a valid OTP");
-              return false;
+             // return false;
             }
            }
 
-document.getElementById("fname").innerHTML=document.getElementById("name").value;
+document.getElementById("fname").innerHTML= document.getElementById("name").value;
 
-function validateName(){
-   
-    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
-    var name = document.getElementById('name').value;
-    if(!regName.test(name)){
-        alert('Please enter your full name (first & last name).');
-        document.getElementById('name').focus();
-        return false;
-    }else{ 
-       // alert('Valid Details given.');
-        return true;
-    }
-}
 
 </script>
 </body>
