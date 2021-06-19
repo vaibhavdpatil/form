@@ -204,7 +204,7 @@
       if (valid) {
         document.getElementsByClassName("step")[currentTab].className += " finish";
       }
-
+      return valid;
       var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
       var name = document.getElementById('name').value;
       // document.write(name);
@@ -275,7 +275,7 @@
       }
     }
     // A function to format text to look like a phone number
-    function phoneFormat(input) {                                                   //Formattimg of Phone Number
+    function phoneFormat(input) {
       // Strip all characters from the input except digits
       input = input.replace(/\D/g, '');
 
@@ -304,7 +304,7 @@
     });
 
   
-    function generateOTP() {                            //To generate OTP
+    function generateOTP() {
       // Declare a digits variable 
       // which stores all digits
       var digits = '0123456789';
@@ -316,7 +316,7 @@
    
     generateOTP();
 
-    function validotp() {                                 //to validation of OTP
+    function validotp() {
       //var stg1 = document.getElementById('capt').value;
       var stg1 = document.getElementById('otpNumber').value;
       if (stg1 == OTP) {
